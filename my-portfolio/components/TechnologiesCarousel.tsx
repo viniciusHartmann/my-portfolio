@@ -3,34 +3,25 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 const technologies = [
   {
     name: "React",
-    image:
-      "https://images.unsplash.com/photo-1758582268064-1ad3b2699ce5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFjdCUyMGphdmFzY3JpcHQlMjBsb2dvfGVufDF8fHx8MTc2NDAzMjc1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
   },
   {
     name: "TypeScript",
-    image:
-      "https://images.unsplash.com/photo-1672308627194-9a2c28daa17a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0eXBlc2NyaXB0JTIwcHJvZ3JhbW1pbmd8ZW58MXx8fHwxNzY0MDMyNzU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
   },
   {
     name: "Node.js",
-    image:
-      "https://images.unsplash.com/photo-1627398242454-45a1465c2479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub2RlanMlMjBiYWNrZW5kfGVufDF8fHx8MTc2NDAzMjc1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
   },
   {
     name: "Delphi",
-    image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/delphi/delphi-original.svg",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/delphi/delphi-original.svg",
   },
   {
     name: "Cloud",
     image:
       "https://images.unsplash.com/photo-1529126894674-8dd7cb884766?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGNvbXB1dGluZyUyMGF3c3xlbnwxfHx8fDE3NjQwMzI3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-  {
-    name: "Delphi",
-    image:
-      "https://images.unsplash.com/photo-1635775017492-1eb935a082a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9ncmFtbWluZyUyMGNvZGUlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NDAzMjc1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-  },
+  }
 ];
 
 export function TechnologiesCarousel() {
@@ -67,6 +58,8 @@ export function TechnologiesCarousel() {
         {/* Scrolling container */}
         <div className="flex gap-8 animate-scroll">
           {[
+            ...technologies,
+            ...technologies,
             ...technologies,
             ...technologies,
             ...technologies,

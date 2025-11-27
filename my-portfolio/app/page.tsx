@@ -25,9 +25,9 @@ export default function Home() {
     <div className="min-h-screen" style={{ backgroundColor: "var(--background)" }}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <HeroSection />
-      <AboutSection />
+      {/* <AboutSection />
       <CareerSection />
-      <ContactSection />
+      <ContactSection /> */}
     </div>
   );
 }
