@@ -1,5 +1,5 @@
-'use client'
-import { useState, useEffect } from "react";
+"use client";
+import { useState } from "react";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
@@ -9,25 +9,17 @@ import { ContactSection } from "../components/ContactSection";
 export default function Home() {
   const [isDark, setIsDark] = useState(true);
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
   const toggleTheme = () => {
     setIsDark(!isDark);
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "var(--background)" }}>
+    <div className={`min-h-screen ${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />
-      <HeroSection />
-      {/* <AboutSection />
-      <CareerSection />
-      <ContactSection /> */}
+      <HeroSection isDark={isDark} />
+      <AboutSection isDark={isDark} />
+      <CareerSection isDark={isDark} />
+      <ContactSection isDark={isDark} />
     </div>
   );
 }

@@ -1,110 +1,98 @@
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useEffect, useState } from "react";
 
-const technologies = [
-  {
-    name: "React",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
-  },
-  {
-    name: "TypeScript",
-    image:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-  },
-  {
-    name: "Node.js",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
-  },
-  {
-    name: "Delphi",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/delphi/delphi-original.svg",
-  },
-  {
-    name: "Cloud",
-    image:
-      "https://images.unsplash.com/photo-1529126894674-8dd7cb884766?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGNvbXB1dGluZyUyMGF3c3xlbnwxfHx8fDE3NjQwMzI3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  }
-];
+interface TechnologiesCarouselProps {
+  isDark: boolean;
+}
 
-export function TechnologiesCarousel() {
+export function TechnologiesCarousel({ isDark }: TechnologiesCarouselProps) {
+  const [position, setPosition] = useState(0);
+
+  const technologies = [
+    { name: "React", color: "#61DAFB" },
+    { name: "TypeScript", color: "#3178C6" },
+    { name: "JavaScript", color: "#F7DF1E" },
+    { name: "Delphi", color: "#EE1F35" },
+    { name: "DevExpress", color: "#FF7200" },
+    { name: "Node.js", color: "#339933" },
+    { name: "PostgreSQL", color: "#4169E1" },
+    { name: "SQL Server", color: "#CC2927" },
+    { name: "Git", color: "#F05032" },
+    { name: "Docker", color: "#2496ED" },
+    { name: "AWS", color: "#FF9900" },
+    { name: "Tailwind CSS", color: "#06B6D4" },
+  ];
+
+  // Duplicate technologies for seamless loop
+  const allTechnologies = [...technologies, ...technologies];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prev) => {
+        const newPosition = prev - 1;
+        // Reset position when first set has scrolled completely
+        if (Math.abs(newPosition) >= technologies.length * 180) {
+          return 0;
+        }
+        return newPosition;
+      });
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [technologies.length]);
+
   return (
-    <div className="mt-20">
-      <h3
-        className="mb-8 text-center"
-        style={{
-          fontSize: "2rem",
-          fontWeight: "600",
-          color: "var(--foreground)",
-        }}
-      >
-        Tecnologias
+    <div>
+      <h3 className="text-xl sm:text-2xl md:text-3xl text-center mb-8 sm:mb-10 px-2">
+        Tecnologias <span className="text-[#34a1eb]">& Ferramentas</span>
       </h3>
-
-      <div className="relative overflow-hidden py-8">
+      <div className="relative overflow-hidden">
         {/* Gradient overlays */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, var(--muted), transparent)",
-          }}
-        />
+          className={`absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none ${
+            isDark
+              ? "bg-gradient-to-r from-gray-950 to-transparent"
+              : "bg-gradient-to-r from-gray-50 to-transparent"
+          }`}
+        ></div>
         <div
-          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to left, var(--muted), transparent)",
-          }}
-        />
+          className={`absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none ${
+            isDark
+              ? "bg-gradient-to-l from-gray-950 to-transparent"
+              : "bg-gradient-to-l from-gray-50 to-transparent"
+          }`}
+        ></div>
 
         {/* Scrolling container */}
-        <div className="flex gap-8 animate-scroll">
-          {[
-            ...technologies,
-            ...technologies,
-            ...technologies,
-            ...technologies,
-            ...technologies,
-          ].map((tech, index) => (
+        <div
+          className="flex gap-4 sm:gap-6 py-8"
+          style={{
+            transform: `translateX(${position}px)`,
+            willChange: "transform",
+          }}
+        >
+          {allTechnologies.map((tech, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-48 h-32 rounded-xl overflow-hidden relative group"
-              style={{ backgroundColor: "var(--card)" }}
+              className={`flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-xl flex flex-col items-center justify-center gap-3 sm:gap-4 transition-all ${
+                isDark
+                  ? "bg-gray-900 border border-gray-800"
+                  : "bg-white border border-gray-200"
+              }`}
             >
-              <ImageWithFallback
-                src={tech.image}
-                alt={tech.name}
-                className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/50 group-hover:bg-black/30 transition-colors">
-                <span
-                  className="text-white"
-                  style={{ fontWeight: "600" }}
-                >
-                  {tech.name}
-                </span>
+              <div
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: `${tech.color}20` }}
+              >
+                <div
+                  className="w-6 h-6 sm:w-8 sm:h-8 rounded"
+                  style={{ backgroundColor: tech.color }}
+                ></div>
               </div>
+              <span className="text-xs sm:text-sm text-center px-2">{tech.name}</span>
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-        
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 }
