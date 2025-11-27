@@ -1,4 +1,5 @@
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { MenuOutlined, CloseOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { Button, Drawer, Menu } from "antd";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -26,80 +27,81 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isDark ? "bg-black/80 border-gray-800" : "bg-white/80 border-gray-200"
-      } backdrop-blur-md border-b`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        backdrop-blur-md border-b 
+        ${isDark ? "bg-black/80 border-gray-800" : "bg-white/80 border-gray-200"}
+      `}
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-xl font-semibold">
-              VH<span className="text-[#34a1eb]">.</span>
-            </span>
+          <div className="text-xl font-semibold">
+            VH<span className="text-[#34a1eb]">.</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-12">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`transition-colors hover:text-[#34a1eb] ${
-                  isDark ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex">
+            <Menu
+              mode="horizontal"
+              theme={isDark ? "dark" : "light"}
+              selectable={false}
+              items={navItems.map((item) => ({
+                key: item.id,
+                label: (
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="hover:text-[#34a1eb] transition-colors"
+                  >
+                    {item.label}
+                  </button>
+                ),
+              }))}
+              className="bg-transparent border-none"
+            />
+          </div>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <button
+          {/* Theme + Mobile Button */}
+          <div className="flex items-center gap-3">
+            <Button
+              shape="circle"
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
-                isDark
-                  ? "bg-gray-800 hover:bg-gray-700"
-                  : "bg-gray-100 hover:bg-gray-200"
-              }`}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+              icon={isDark ? <SunOutlined /> : <MoonOutlined />}
+            />
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-colors ${
-                isDark
-                  ? "bg-gray-800 hover:bg-gray-700"
-                  : "bg-gray-100 hover:bg-gray-200"
-              }`}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            <Button
+              shape="circle"
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(true)}
+              icon={<MenuOutlined />}
+            />
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-800">
-            {navItems.map((item) => (
+      {/* Mobile Drawer */}
+      <Drawer
+        title="Menu"
+        placement="right"
+        open={isMenuOpen}
+        closeIcon={<CloseOutlined />}
+        onClose={() => setIsMenuOpen(false)}
+      >
+        <Menu
+          mode="inline"
+          selectable={false}
+          items={navItems.map((item) => ({
+            key: item.id,
+            label: (
               <button
-                key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 transition-colors hover:text-[#34a1eb] ${
-                  isDark ? "text-gray-300" : "text-gray-700"
-                }`}
+                className="w-full text-left py-2"
               >
                 {item.label}
               </button>
-            ))}
-          </nav>
-        )}
-      </div>
+            ),
+          }))}
+        />
+      </Drawer>
     </header>
   );
 }

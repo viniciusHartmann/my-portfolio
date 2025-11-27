@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Form, Input, Button, Card, List } from "antd";
 
 interface ContactSectionProps {
   isDark: boolean;
@@ -35,6 +36,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
           Entre em <span className="text-[#34a1eb]">Contato</span>
         </h2>
+
         <p
           className={`text-center text-base sm:text-lg mb-8 sm:mb-12 px-4 ${
             isDark ? "text-gray-400" : "text-gray-600"
@@ -44,103 +46,67 @@ export function ContactSection({ isDark }: ContactSectionProps) {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-          {/* Contact Form */}
-          <div>
-            <form className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className={`block mb-2 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Nome
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className={`w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-[#34a1eb] ${
-                    isDark
-                      ? "bg-gray-900 border-gray-800 text-white"
-                      : "bg-white border-gray-300 text-black"
-                  }`}
+          {/* Formulário com Ant Design */}
+          <Card
+            bordered={false}
+            className={`${isDark ? "bg-gray-900" : "bg-white"}`}
+            style={{ boxShadow: isDark ? "0 0 0 1px #1f2937" : "0 0 0 1px #e5e7eb" }}
+          >
+            <Form layout="vertical">
+              <Form.Item label="Nome" required>
+                <Input
                   placeholder="Seu nome"
+                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
                 />
-              </div>
+              </Form.Item>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className={`block mb-2 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Email
-                </label>
-                <input
+              <Form.Item label="Email" required>
+                <Input
                   type="email"
-                  id="email"
-                  className={`w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-[#34a1eb] ${
-                    isDark
-                      ? "bg-gray-900 border-gray-800 text-white"
-                      : "bg-white border-gray-300 text-black"
-                  }`}
                   placeholder="seu@email.com"
+                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
                 />
-              </div>
+              </Form.Item>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className={`block mb-2 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Mensagem
-                </label>
-                <textarea
-                  id="message"
+              <Form.Item label="Mensagem" required>
+                <Input.TextArea
                   rows={5}
-                  className={`w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-[#34a1eb] resize-none ${
-                    isDark
-                      ? "bg-gray-900 border-gray-800 text-white"
-                      : "bg-white border-gray-300 text-black"
-                  }`}
                   placeholder="Sua mensagem..."
-                ></textarea>
-              </div>
+                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
+                />
+              </Form.Item>
 
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-[#34a1eb] text-white rounded-lg hover:bg-[#2a8acc] transition-colors flex items-center justify-center gap-2"
+              <Button
+                type="primary"
+                block
+                icon={<Send className="w-5 h-5" />}
+                className="!bg-[#34a1eb] hover:!bg-[#2a8acc]"
               >
-                <Send className="w-5 h-5" />
                 Enviar Mensagem
-              </button>
-            </form>
-          </div>
+              </Button>
+            </Form>
+          </Card>
 
-          {/* Contact Info */}
-          <div>
-            <div
-              className={`p-6 rounded-xl mb-6 ${
-                isDark
-                  ? "bg-gray-900 border border-gray-800"
-                  : "bg-gray-50 border border-gray-200"
-              }`}
+          {/* Informações de Contato */}
+          <div className="flex flex-col gap-6">
+            <Card
+              title="Informações de Contato"
+              className={`${isDark ? "bg-gray-900" : "bg-gray-50"}`}
+              style={{
+                borderColor: isDark ? "#1f2937" : "#e5e7eb",
+                color: isDark ? "white" : "black",
+              }}
             >
-              <h3 className="text-2xl mb-6">Informações de Contato</h3>
-              <div className="space-y-4">
-                {socialLinks.map((link, index) => (
+              <List
+                itemLayout="horizontal"
+                dataSource={socialLinks}
+                renderItem={(link) => (
                   <a
-                    key={index}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-start gap-4 p-4 rounded-lg transition-all hover:scale-105 ${
-                      isDark
-                        ? "bg-gray-800 hover:bg-gray-750"
-                        : "bg-white hover:bg-gray-50"
+                      isDark ? "bg-gray-800" : "bg-white"
                     }`}
                   >
                     <link.icon className="w-6 h-6 text-[#34a1eb] flex-shrink-0 mt-1" />
@@ -155,25 +121,22 @@ export function ContactSection({ isDark }: ContactSectionProps) {
                       </p>
                     </div>
                   </a>
-                ))}
-              </div>
-            </div>
+                )}
+              />
+            </Card>
 
-            <div
-              className={`p-6 rounded-xl ${
+            {/* Frase Inspiradora */}
+            <Card
+              className={`text-center ${
                 isDark
-                  ? "bg-gradient-to-br from-[#34a1eb]/20 to-transparent border border-[#34a1eb]/30"
-                  : "bg-gradient-to-br from-[#34a1eb]/10 to-transparent border border-[#34a1eb]/20"
+                  ? "bg-gradient-to-br from-[#34a1eb]/20 to-transparent border-[#34a1eb]/30"
+                  : "bg-gradient-to-br from-[#34a1eb]/10 to-transparent border-[#34a1eb]/20"
               }`}
             >
-              <p
-                className={`text-center ${
-                  isDark ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
+              <p className={`${isDark ? "text-gray-300" : "text-gray-700"}`}>
                 "Transformando ideias em realidade através do código"
               </p>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

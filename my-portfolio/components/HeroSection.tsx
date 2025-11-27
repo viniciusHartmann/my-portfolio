@@ -1,4 +1,7 @@
+import { Button, Typography } from "antd";
 import { TypewriterEffect } from "./TypewriterEffect";
+
+const { Title, Paragraph, Text } = Typography;
 
 interface HeroSectionProps {
   isDark: boolean;
@@ -13,50 +16,69 @@ export function HeroSection({ isDark }: HeroSectionProps) {
       }`}
     >
       <div className="container mx-auto text-center max-w-4xl">
+        {/* Subtítulo */}
         <div className="mb-4">
-          <span
+          <Text
             className={`text-sm sm:text-base ${
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
             Olá, eu sou
-          </span>
+          </Text>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 px-2">
+
+        {/* Título principal */}
+        <Title
+          level={1}
+          className="!text-3xl sm:!text-4xl md:!text-5xl lg:!text-6xl xl:!text-7xl !mb-6 px-2 !text-inherit"
+        >
           <TypewriterEffect text="Vinícius Hartmann" isDark={isDark} />
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#34a1eb] mb-6 sm:mb-8 px-2">
+        </Title>
+
+        {/* Subtítulo azul */}
+        <Title
+          level={3}
+          className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl !text-[#34a1eb] !mb-6 sm:!mb-8 px-2"
+        >
           Desenvolvedor Full Stack
-        </p>
-        <p
+        </Title>
+
+        {/* Parágrafo */}
+        <Paragraph
           className={`max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 ${
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
           Especializado em criar soluções inovadoras e experiências digitais
           excepcionais
-        </p>
+        </Paragraph>
+
+        {/* Botões */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-          <button
+          <Button
+            type="primary"
+            size="large"
+            className="w-full sm:w-auto !px-8 sm:!px-10 !py-3 sm:!py-4 !bg-[#34a1eb] hover:!bg-[#2a8acc]"
             onClick={() =>
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-[#34a1eb] text-white rounded-lg hover:bg-[#2a8acc] transition-colors"
           >
             Entre em Contato
-          </button>
-          <button
+          </Button>
+
+          <Button
+            size="large"
+            className={`w-full sm:w-auto !px-8 sm:!px-10 !py-3 sm:!py-4 ${
+              isDark
+                ? "!border-gray-700 hover:!border-[#34a1eb] !text-gray-300"
+                : "!border-gray-300 hover:!border-[#34a1eb] !text-gray-700"
+            }`}
             onClick={() =>
               document.getElementById("career")?.scrollIntoView({ behavior: "smooth" })
             }
-            className={`w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-colors ${
-              isDark
-                ? "border border-gray-700 hover:border-[#34a1eb]"
-                : "border border-gray-300 hover:border-[#34a1eb]"
-            }`}
           >
             Ver Carreira
-          </button>
+          </Button>
         </div>
       </div>
     </section>

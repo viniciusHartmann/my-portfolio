@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Briefcase, Calendar, X } from "lucide-react";
+import { Timeline, Card, Typography, Modal, Tag } from "antd";
 import { TechnologiesCarousel } from "./TechnologiesCarousel";
+
+const { Title, Paragraph } = Typography;
 
 interface CareerSectionProps {
   isDark: boolean;
@@ -81,171 +84,147 @@ export function CareerSection({ isDark }: CareerSectionProps) {
       }`}
     >
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-12 sm:mb-16 px-2">
+        <Title
+          level={2}
+          className="text-center !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl mb-12 sm:mb-16 px-2"
+        >
           Minha <span className="text-[#34a1eb]">Carreira</span>
-        </h2>
+        </Title>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div
-            className={`absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-0.5 h-full ${
-              isDark ? "bg-gray-800" : "bg-gray-300"
-            }`}
-          ></div>
-
-          {/* Events */}
-          <div className="space-y-12">
-            {careerEvents.map((event, index) => (
-              <div
-                key={index}
-                className={`relative flex flex-col sm:flex-row ${
-                  index % 2 === 0 ? "sm:flex-row-reverse" : ""
-                } items-center`}
+        {/* ===== TIMELINE ANT DESIGN ===== */}
+        <Timeline
+          mode="alternate"
+          items={careerEvents.map((event) => ({
+            color: "#34a1eb",
+            dot: (
+              <div className="w-4 h-4 bg-[#34a1eb] rounded-full border-4 border-black" />
+            ),
+            children: (
+              <Card
+                hoverable
+                onClick={() => setSelectedEvent(event)}
+                className={`cursor-pointer transition-all ${
+                  isDark
+                    ? "!bg-gray-900 !border-gray-800 hover:!border-[#34a1eb]"
+                    : "!bg-white !border-gray-200 hover:!border-[#34a1eb]"
+                }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-4 h-4 bg-[#34a1eb] rounded-full border-4 border-black z-10"></div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-4 h-4 text-[#34a1eb]" />
+                  <span className="text-sm text-[#34a1eb]">{event.year}</span>
+                </div>
 
-                {/* Content */}
-                <div
-                  className={`w-full sm:w-5/12 ml-8 sm:ml-0 ${
-                    index % 2 === 0 ? "sm:text-right sm:pr-12" : "sm:pl-12"
-                  }`}
-                >
-                  <button
-                    onClick={() => setSelectedEvent(event)}
-                    className={`w-full p-6 rounded-xl transition-all duration-300 hover:scale-105 text-left ${
-                      index % 2 === 0 ? "sm:text-right" : ""
-                    } ${
-                      isDark
-                        ? "bg-gray-900 border border-gray-800 hover:border-[#34a1eb]"
-                        : "bg-white border border-gray-200 hover:border-[#34a1eb]"
+                <Title level={4} className="!mb-1">
+                  {event.title}
+                </Title>
+
+                <div className="flex items-center gap-2 mb-3">
+                  <Briefcase className="w-4 h-4 text-gray-400" />
+                  <span
+                    className={`text-sm ${
+                      isDark ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    <div className="flex items-center gap-2 mb-2 justify-start sm:justify-start">
-                      {index % 2 !== 0 && <Calendar className="w-4 h-4 text-[#34a1eb]" />}
-                      <span className="text-sm text-[#34a1eb]">{event.year}</span>
-                      {index % 2 === 0 && <Calendar className="w-4 h-4 text-[#34a1eb] sm:order-first" />}
-                    </div>
-                    <h3 className="text-xl mb-1">{event.title}</h3>
-                    <div className="flex items-center gap-2 mb-3 justify-start sm:justify-start">
-                      {index % 2 !== 0 && <Briefcase className="w-4 h-4 text-gray-400" />}
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {event.company}
-                      </p>
-                      {index % 2 === 0 && <Briefcase className="w-4 h-4 text-gray-400 sm:order-first" />}
-                    </div>
-                    <p
-                      className={`${
-                        isDark ? "text-gray-300" : "text-gray-700"
-                      }`}
-                    >
-                      {event.description}
-                    </p>
-                  </button>
+                    {event.company}
+                  </span>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Technologies Carousel */}
+                <Paragraph
+                  className={`${isDark ? "text-gray-300" : "text-gray-700"}`}
+                >
+                  {event.description}
+                </Paragraph>
+              </Card>
+            ),
+          }))}
+        />
+
+        {/* Tecnologias */}
         <div className="mt-20">
           <TechnologiesCarousel isDark={isDark} />
         </div>
       </div>
 
-      {/* Modal */}
-      {selectedEvent && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedEvent(null)}
-        >
-          <div
-            className={`max-w-2xl w-full rounded-2xl p-8 ${
-              isDark ? "bg-gray-900" : "bg-white"
-            } max-h-[90vh] overflow-y-auto`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-5 h-5 text-[#34a1eb]" />
-                  <span className="text-sm text-[#34a1eb]">{selectedEvent.year}</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl mb-2">{selectedEvent.title}</h3>
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-5 h-5 text-gray-400" />
-                  <p
-                    className={`text-lg ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {selectedEvent.company}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedEvent(null)}
-                className={`p-2 rounded-lg transition-colors ${
-                  isDark
-                    ? "hover:bg-gray-800"
-                    : "hover:bg-gray-100"
-                }`}
-              >
-                <X className="w-6 h-6" />
-              </button>
+      {/* ===== MODAL ANT DESIGN ===== */}
+      <Modal
+        open={!!selectedEvent}
+        onCancel={() => setSelectedEvent(null)}
+        footer={null}
+        centered
+        width={700}
+        className={`${
+          isDark ? "[&_.ant-modal-content]:!bg-gray-900 [&_.ant-modal-header]:!bg-gray-900" : ""
+        }`}
+        closeIcon={
+          <X className={`w-5 h-5 ${isDark ? "text-white" : "text-black"}`} />
+        }
+      >
+        {selectedEvent && (
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Calendar className="w-5 h-5 text-[#34a1eb]" />
+              <span className="text-sm text-[#34a1eb]">
+                {selectedEvent.year}
+              </span>
             </div>
 
-            <p
+            <Title level={3}>{selectedEvent.title}</Title>
+
+            <div className="flex items-center gap-2 mb-4">
+              <Briefcase className="w-5 h-5 text-gray-400" />
+              <span
+                className={`text-lg ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                {selectedEvent.company}
+              </span>
+            </div>
+
+            <Paragraph
               className={`mb-6 text-lg ${
                 isDark ? "text-gray-300" : "text-gray-700"
               }`}
             >
               {selectedEvent.description}
-            </p>
+            </Paragraph>
 
-            <div className="mb-6">
-              <h4 className="text-xl mb-4">Principais Atividades:</h4>
-              <ul className="space-y-2">
-                {selectedEvent.details.map((detail, index) => (
-                  <li
-                    key={index}
-                    className={`flex items-start gap-3 ${
-                      isDark ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    <span className="text-[#34a1eb] mt-1">•</span>
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Title level={4} className="!mb-3">
+              Principais Atividades:
+            </Title>
+            <ul className="space-y-1 mb-6">
+              {selectedEvent.details.map((detail, index) => (
+                <li
+                  key={index}
+                  className={`flex gap-3 ${
+                    isDark ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  <span className="text-[#34a1eb] mt-1">•</span> {detail}
+                </li>
+              ))}
+            </ul>
 
-            <div>
-              <h4 className="text-xl mb-4">Tecnologias Utilizadas:</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedEvent.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className={`px-4 py-2 rounded-lg ${
-                      isDark
-                        ? "bg-gray-800 text-gray-300"
-                        : "bg-gray-100 text-gray-700"
-                    }`}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            <Title level={4} className="!mb-3">
+              Tecnologias Utilizadas:
+            </Title>
+            <div className="flex flex-wrap gap-2">
+              {selectedEvent.technologies.map((tech, index) => (
+                <Tag
+                  key={index}
+                  className={`px-3 py-1 text-base ${
+                    isDark
+                      ? "!bg-gray-800 !text-gray-300"
+                      : "!bg-gray-100 !text-gray-700"
+                  }`}
+                >
+                  {tech}
+                </Tag>
+              ))}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </Modal>
     </section>
   );
 }
