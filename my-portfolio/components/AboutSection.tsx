@@ -1,5 +1,6 @@
+"use client";
+
 import { Image as AntImage, Typography, Card, Row, Col } from "antd";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Code2, Gamepad2, Music, Plane } from "lucide-react";
 
 const { Title, Paragraph } = Typography;
@@ -35,9 +36,8 @@ export function AboutSection({ isDark }: AboutSectionProps) {
   return (
     <section
       id="about"
-      className={`py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${
-        isDark ? "bg-black" : "bg-white"
-      }`}
+      className={`py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"
+        }`}
     >
       <div className="container mx-auto max-w-6xl">
         {/* Título principal */}
@@ -45,7 +45,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
           level={2}
           className="text-center !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl mb-12 sm:mb-16 px-2"
         >
-          Sobre <span className="text-[#34a1eb]">Mim</span>
+          <span className="text-[#34a1eb]">Sobre Mim</span>
         </Title>
 
         <Row gutter={[32, 32]} align="middle" className="mb-12 sm:mb-16">
@@ -55,8 +55,8 @@ export function AboutSection({ isDark }: AboutSectionProps) {
               <div className="absolute inset-0 bg-gradient-to-br from-[#34a1eb] to-transparent opacity-20 rounded-2xl" />
 
               <AntImage
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-                alt="Vinícius Hartmann"
+                src="/images/viniciusHartmann.jpg"
+                alt="Vinícius Bernardo Hartmann"
                 preview={false}
                 className="rounded-2xl !w-full !h-full object-cover border-2 border-[#34a1eb]"
               />
@@ -66,13 +66,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
           {/* Texto */}
           <Col xs={24} md={12}>
             <Title level={3} className="!text-xl sm:!text-2xl md:!text-3xl mb-4 sm:mb-6">
-              Desenvolvedor <span className="text-[#34a1eb]">Full Stack</span>
+              <span className="text-[#34a1eb]">Desenvolvedor Full Stack</span>
             </Title>
 
             <Paragraph
-              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${
-                isDark ? "text-gray-400" : "text-gray-600"
-              }`}
+              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed`}
+              style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
             >
               Com mais de 10 anos de experiência em desenvolvimento de software,
               sou especializado em criar soluções robustas e escaláveis usando
@@ -80,18 +79,16 @@ export function AboutSection({ isDark }: AboutSectionProps) {
             </Paragraph>
 
             <Paragraph
-              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${
-                isDark ? "text-gray-400" : "text-gray-600"
-              }`}
+              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed `}
+              style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
             >
               Tenho expertise em desenvolvimento web e desktop, trabalhando com
               frameworks como React, TypeScript, Delphi e muito mais.
             </Paragraph>
 
             <Paragraph
-              className={`text-sm sm:text-base md:text-lg leading-relaxed ${
-                isDark ? "text-gray-400" : "text-gray-600"
-              }`}
+              className={`text-sm sm:text-base md:text-lg leading-relaxed `}
+              style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
             >
               Sempre buscando aprender novas tecnologias e compartilhar
               conhecimento com a comunidade.
@@ -112,11 +109,10 @@ export function AboutSection({ isDark }: AboutSectionProps) {
             <Col key={index} xs={24} sm={12} lg={6}>
               <Card
                 hoverable
-                className={`p-4 rounded-xl transition-all duration-300 ${
-                  isDark
+                className={`p-4 rounded-xl transition-all duration-300 ${isDark
                     ? "bg-gray-900 border-gray-800 hover:!border-[#34a1eb]"
                     : "bg-gray-50 border-gray-200 hover:!border-[#34a1eb]"
-                }`}
+                  }`}
               >
                 <div className="mb-4">
                   <hobby.icon className="w-10 h-10 text-[#34a1eb]" />
@@ -127,9 +123,8 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                 </Title>
 
                 <Paragraph
-                  className={`text-sm ${
-                    isDark ? "text-gray-400" : "text-gray-600"
-                  }`}
+                  className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
                 >
                   {hobby.description}
                 </Paragraph>

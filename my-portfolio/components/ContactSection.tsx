@@ -1,5 +1,7 @@
+
 import { Mail, Linkedin, Github, Send } from "lucide-react";
-import { Form, Input, Button, Card, List } from "antd";
+import { Form, Input, Button, Table } from "antd";
+import { Card } from "./ui/card-custom";
 
 interface ContactSectionProps {
   isDark: boolean;
@@ -48,7 +50,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Formulário com Ant Design */}
           <Card
-            bordered={false}
+            variant="borderless"
             className={`${isDark ? "bg-gray-900" : "bg-white"}`}
             style={{ boxShadow: isDark ? "0 0 0 1px #1f2937" : "0 0 0 1px #e5e7eb" }}
           >
@@ -97,31 +99,39 @@ export function ContactSection({ isDark }: ContactSectionProps) {
                 color: isDark ? "white" : "black",
               }}
             >
-              <List
-                itemLayout="horizontal"
-                dataSource={socialLinks}
-                renderItem={(link) => (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-start gap-4 p-4 rounded-lg transition-all hover:scale-105 ${
-                      isDark ? "bg-gray-800" : "bg-white"
-                    }`}
-                  >
-                    <link.icon className="w-6 h-6 text-[#34a1eb] flex-shrink-0 mt-1" />
-                    <div className="min-w-0 flex-1">
-                      <p className="mb-1">{link.label}</p>
-                      <p
-                        className={`text-sm break-all ${
-                          isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {link.value}
-                      </p>
-                    </div>
-                  </a>
-                )}
+              <Table
+                columns={[
+                  {
+                    key: "icon",
+                    width: 50,
+                    render: (_, record: typeof socialLinks[0]) => (
+                      <record.icon className="w-6 h-6 text-[#34a1eb]" />
+                    ),
+                  },
+                  {
+                    title: "Contato",
+                    key: "contact",
+                    render: (_, record: typeof socialLinks[0]) => (
+                      <div className="min-w-0">
+                        <p className="font-medium mb-1">{record.label}</p>
+                        <a
+                          href={record.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`text-sm break-all hover:underline ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          {record.value}
+                        </a>
+                      </div>
+                    ),
+                  },
+                ]}
+                dataSource={socialLinks.map((link, idx) => ({ ...link, key: idx }))}
+                pagination={false}
+                bordered={false}
+                showHeader={false}
               />
             </Card>
 

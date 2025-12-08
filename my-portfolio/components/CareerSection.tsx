@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Briefcase, Calendar, X } from "lucide-react";
 import { Timeline, Card, Typography, Modal, Tag } from "antd";
@@ -96,10 +97,10 @@ export function CareerSection({ isDark }: CareerSectionProps) {
           mode="alternate"
           items={careerEvents.map((event) => ({
             color: "#34a1eb",
-            dot: (
+            icon: (
               <div className="w-4 h-4 bg-[#34a1eb] rounded-full border-4 border-black" />
             ),
-            children: (
+            content: (
               <Card
                 hoverable
                 onClick={() => setSelectedEvent(event)}

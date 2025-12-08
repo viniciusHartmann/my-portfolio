@@ -1,6 +1,7 @@
-import { MenuOutlined, CloseOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
+"use client";
+
+import { SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { Button, Drawer, Menu } from "antd";
-import { useState } from "react";
 
 interface HeaderProps {
   isDark: boolean;
@@ -8,16 +9,6 @@ interface HeaderProps {
 }
 
 export function Header({ isDark, toggleTheme }: HeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
-  };
-
   const navItems = [
     { id: "hero", label: "Início" },
     { id: "about", label: "Sobre" },
@@ -40,24 +31,17 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex">
-            <Menu
-              mode="horizontal"
-              theme={isDark ? "dark" : "light"}
-              selectable={false}
-              items={navItems.map((item) => ({
-                key: item.id,
-                label: (
-                  <button
-                    onClick={() => scrollToSection(item.id)}
-                    className="hover:text-[#34a1eb] transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ),
-              }))}
-              className="bg-transparent border-none"
-            />
+          <div className="hidden md:flex w-full justify-center">
+            <nav className="flex gap-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  className="hover:text-[#34a1eb] transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
           </div>
 
           {/* Theme + Mobile Button */}
@@ -67,41 +51,9 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
               onClick={toggleTheme}
               icon={isDark ? <SunOutlined /> : <MoonOutlined />}
             />
-
-            <Button
-              shape="circle"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(true)}
-              icon={<MenuOutlined />}
-            />
           </div>
         </div>
       </div>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        title="Menu"
-        placement="right"
-        open={isMenuOpen}
-        closeIcon={<CloseOutlined />}
-        onClose={() => setIsMenuOpen(false)}
-      >
-        <Menu
-          mode="inline"
-          selectable={false}
-          items={navItems.map((item) => ({
-            key: item.id,
-            label: (
-              <button
-                onClick={() => scrollToSection(item.id)}
-                className="w-full text-left py-2"
-              >
-                {item.label}
-              </button>
-            ),
-          }))}
-        />
-      </Drawer>
     </header>
   );
 }

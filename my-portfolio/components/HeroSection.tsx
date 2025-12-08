@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Typography } from "antd";
 import { TypewriterEffect } from "./TypewriterEffect";
 
@@ -19,9 +21,8 @@ export function HeroSection({ isDark }: HeroSectionProps) {
         {/* Subtítulo */}
         <div className="mb-4">
           <Text
-            className={`text-sm sm:text-base ${
-              isDark ? "text-gray-400" : "text-gray-600"
-            }`}
+            className={`text-sm sm:text-base`}  
+            style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
           >
             Olá, eu sou
           </Text>
@@ -45,9 +46,8 @@ export function HeroSection({ isDark }: HeroSectionProps) {
 
         {/* Parágrafo */}
         <Paragraph
-          className={`max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 ${
-            isDark ? "text-gray-400" : "text-gray-600"
-          }`}
+          className={`max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 `}
+          style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
         >
           Especializado em criar soluções inovadoras e experiências digitais
           excepcionais
@@ -68,11 +68,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
 
           <Button
             size="large"
-            className={`w-full sm:w-auto !px-8 sm:!px-10 !py-3 sm:!py-4 ${
-              isDark
-                ? "!border-gray-700 hover:!border-[#34a1eb] !text-gray-300"
-                : "!border-gray-300 hover:!border-[#34a1eb] !text-gray-700"
-            }`}
+            className={`w-full sm:w-auto !px-8 sm:!px-10 !py-3 sm:!py-4 !border-gray-700 hover:!border-[#34a1eb] !text-gray-700`}
             onClick={() =>
               document.getElementById("career")?.scrollIntoView({ behavior: "smooth" })
             }
