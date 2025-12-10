@@ -41,12 +41,9 @@ export function AboutSection({ isDark }: AboutSectionProps) {
     >
       <div className="container mx-auto max-w-6xl">
         {/* Título principal */}
-        <Title
-          level={2}
-          className="text-center !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl mb-12 sm:mb-16 px-2"
-        >
-          <span className="text-[#34a1eb]">Sobre Mim</span>
-        </Title>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
+          Sobre <span className="text-[#34a1eb]">Mim</span>
+        </h2>
 
         <Row gutter={[32, 32]} align="middle" className="mb-12 sm:mb-16">
           {/* Foto */}
@@ -97,12 +94,9 @@ export function AboutSection({ isDark }: AboutSectionProps) {
         </Row>
 
         {/* Hobbies */}
-        <Title
-          level={3}
-          className="text-center !text-xl sm:!text-2xl md:!text-3xl mb-8 sm:mb-10 px-2"
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
           Meus <span className="text-[#34a1eb]">Hobbies</span>
-        </Title>
+        </h2>
 
         <Row gutter={[24, 24]}>
           {hobbies.map((hobby, index) => (
@@ -110,8 +104,8 @@ export function AboutSection({ isDark }: AboutSectionProps) {
               <Card
                 hoverable
                 className={`p-4 rounded-xl transition-all duration-300 ${isDark
-                    ? "bg-gray-900 border-gray-800 hover:!border-[#34a1eb]"
-                    : "bg-gray-50 border-gray-200 hover:!border-[#34a1eb]"
+                  ? "bg-gray-900 border-gray-800 hover:!border-[#34a1eb]"
+                  : "bg-gray-50 border-gray-200 hover:!border-[#34a1eb]"
                   }`}
               >
                 <div className="mb-4">

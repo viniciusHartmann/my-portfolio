@@ -85,12 +85,9 @@ export function CareerSection({ isDark }: CareerSectionProps) {
       }`}
     >
       <div className="container mx-auto max-w-6xl">
-        <Title
-          level={2}
-          className="text-center !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl mb-12 sm:mb-16 px-2"
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
           Minha <span className="text-[#34a1eb]">Carreira</span>
-        </Title>
+        </h2>
 
         {/* ===== TIMELINE ANT DESIGN ===== */}
         <Timeline

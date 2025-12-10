@@ -86,3 +86,15 @@ a, button, input, textarea, select {
     font-size: 0.9rem;
   }
 }
+
+.paragraph {
+  text-align: center;
+}
+
+.label-dark {
+  color: #9ca3af; /* gray-400-ish */
+}
+
+.label-light {
+  color: #4b5563; /* gray-600-ish */
+}

@@ -21,8 +21,9 @@ export function HeroSection({ isDark }: HeroSectionProps) {
         {/* Subtítulo */}
         <div className="mb-4">
           <Text
-            className={`text-sm sm:text-base`}  
-            style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
+            className={`text-sm sm:text-base ${
+            isDark ? "label-dark" : "label-light"
+          }`}  
           >
             Olá, eu sou
           </Text>
@@ -46,8 +47,9 @@ export function HeroSection({ isDark }: HeroSectionProps) {
 
         {/* Parágrafo */}
         <Paragraph
-          className={`max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 `}
-          style={{ color: isDark ? "#9ca3af" : "#4b5563" }}
+          className={`paragraph max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 ${
+            isDark ? "label-dark" : "label-light"
+          }`}
         >
           Especializado em criar soluções inovadoras e experiências digitais
           excepcionais
