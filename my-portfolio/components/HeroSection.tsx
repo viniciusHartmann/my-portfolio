@@ -1,5 +1,4 @@
 "use client";
-
 import { Button, Typography } from "antd";
 import { TypewriterEffect } from "./TypewriterEffect";
 
@@ -13,9 +12,9 @@ export function HeroSection({ isDark }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 ${
-        isDark ? "bg-black" : "bg-white"
-      }`}
+      className={`min-h-screen flex items-center justify-center px-4 !sm:px-6 lg:px-8 pt-16 ${
+            isDark ? "label-dark" : "label-light"
+          }`}
     >
       <div className="container mx-auto text-center max-w-4xl">
         {/* Subtítulo */}
@@ -47,9 +46,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
 
         {/* Parágrafo */}
         <Paragraph
-          className={`paragraph max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed px-4 ${
-            isDark ? "label-dark" : "label-light"
-          }`}
+          className={`!mb-6 sm:!mb-8 px-2 ${isDark ? "label-dark" : "label-light"}`}
         >
           Especializado em criar soluções inovadoras e experiências digitais
           excepcionais

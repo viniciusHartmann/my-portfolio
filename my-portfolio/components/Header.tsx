@@ -1,7 +1,7 @@
 "use client";
 
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
-import { Button, Drawer, Menu } from "antd";
+import { Button } from "antd";
 
 interface HeaderProps {
   isDark: boolean;
@@ -45,7 +45,7 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
           </div>
 
           {/* Theme + Mobile Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex justify-end">
             <Button
               shape="circle"
               onClick={toggleTheme}

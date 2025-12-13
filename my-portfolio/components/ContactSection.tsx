@@ -1,4 +1,4 @@
-
+'use client";'
 import { Mail, Linkedin, Github, Send } from "lucide-react";
 import { Form, Input, Button, Table } from "antd";
 import { Card } from "./ui/card-custom";
@@ -12,7 +12,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
     {
       icon: Mail,
       label: "Email",
-      value: "vinicius@example.com",
+      value: "vinicius.hartmann31@gmail.com",
       href: "mailto:vinicius@example.com",
     },
     {
@@ -32,22 +32,22 @@ export function ContactSection({ isDark }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className={`py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"}`}
+      className={`!py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"}`}
     >
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
+      <div className="container !mx-auto max-w-4xl">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl !text-center !mb-4 sm:mb-6 px-2">
           Entre em <span className="text-[#34a1eb]">Contato</span>
         </h2>
 
         <p
-          className={`text-center text-base sm:text-lg mb-8 sm:mb-12 px-4 ${
+          className={`!text-center text-base sm:text-lg !mb-8 sm:mb-12 px-4 ${
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
           Estou sempre aberto a novos projetos e oportunidades
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 !gap-6 sm:gap-8">
           {/* Formulário com Ant Design */}
           <Card
             variant="borderless"
@@ -90,7 +90,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
           </Card>
 
           {/* Informações de Contato */}
-          <div className="flex flex-col gap-6">
+          <div className="!flex flex-col !gap-6">
             <Card
               title="Informações de Contato"
               className={`${isDark ? "bg-gray-900" : "bg-gray-50"}`}
@@ -143,7 +143,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
                   : "bg-gradient-to-br from-[#34a1eb]/10 to-transparent border-[#34a1eb]/20"
               }`}
             >
-              <p className={`${isDark ? "text-gray-300" : "text-gray-700"}`}>
+              <p className={`${isDark ? "label-dark" : "label-light"}`}>
                 "Transformando ideias em realidade através do código"
               </p>
             </Card>

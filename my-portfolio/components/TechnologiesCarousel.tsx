@@ -42,7 +42,7 @@ export function TechnologiesCarousel({ isDark }: TechnologiesCarouselProps) {
 
   return (
     <div>
-      <h3 className="text-xl sm:text-2xl md:text-3xl text-center mb-8 sm:mb-10 px-2">
+      <h3 className="text-xl sm:text-2xl md:text-3xl text-center !mb-8 sm:mb-10 px-2">
         Tecnologias <span className="text-[#34a1eb]">& Ferramentas</span>
       </h3>
       <div className="relative overflow-hidden">
@@ -73,14 +73,14 @@ export function TechnologiesCarousel({ isDark }: TechnologiesCarouselProps) {
           {allTechnologies.map((tech, index) => (
             <div
               key={index}
-              className={`flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-xl flex flex-col items-center justify-center gap-3 sm:gap-4 transition-all ${
+              className={`flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-xl !flex flex-col !items-center !justify-center !gap-3 sm:!gap-4 transition-all ${
                 isDark
                   ? "bg-gray-900 border border-gray-800"
                   : "bg-white border border-gray-200"
               }`}
             >
               <div
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full !flex !items-center !justify-center"
                 style={{ backgroundColor: `${tech.color}20` }}
               >
                 <div

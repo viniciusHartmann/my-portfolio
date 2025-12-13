@@ -1,4 +1,4 @@
-
+'use client';
 import { useState } from "react";
 import { Briefcase, Calendar, X } from "lucide-react";
 import { Timeline, Card, Typography, Modal, Tag } from "antd";
@@ -80,12 +80,11 @@ export function CareerSection({ isDark }: CareerSectionProps) {
   return (
     <section
       id="career"
-      className={`py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${
-        isDark ? "bg-gray-950" : "bg-gray-50"
-      }`}
+      className={`!py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-gray-950" : "bg-gray-50"
+        }`}
     >
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-4 sm:mb-6 px-2">
+      <div className="container !mx-auto max-w-6xl">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl !text-center !mb-4 sm:mb-6 px-2">
           Minha <span className="text-[#34a1eb]">Carreira</span>
         </h2>
 
@@ -101,34 +100,28 @@ export function CareerSection({ isDark }: CareerSectionProps) {
               <Card
                 hoverable
                 onClick={() => setSelectedEvent(event)}
-                className={`cursor-pointer transition-all ${
-                  isDark
-                    ? "!bg-gray-900 !border-gray-800 hover:!border-[#34a1eb]"
-                    : "!bg-white !border-gray-200 hover:!border-[#34a1eb]"
-                }`}
+                className={`!cursor-pointer transition-all ${isDark ? "label-dark" : "label-light"}`}
               >
-                <div className="flex items-center gap-2 mb-2">
+                <div className="!flex items-center !gap-2 !mb-2">
                   <Calendar className="w-4 h-4 text-[#34a1eb]" />
                   <span className="text-sm text-[#34a1eb]">{event.year}</span>
                 </div>
 
-                <Title level={4} className="!mb-1">
+                <Title level={4} className={`!mb-1 ${isDark ? "label-dark" : "label-light"}`} >
                   {event.title}
                 </Title>
 
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex !items-center !gap-2 !mb-3">
                   <Briefcase className="w-4 h-4 text-gray-400" />
                   <span
-                    className={`text-sm ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
+                    className={`text-sm ${isDark ? "label-dark" : "label-light"}`}
                   >
                     {event.company}
                   </span>
                 </div>
 
                 <Paragraph
-                  className={`${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  className={`${isDark ? "label-dark" : "label-light"}`}
                 >
                   {event.description}
                 </Paragraph>
@@ -138,7 +131,7 @@ export function CareerSection({ isDark }: CareerSectionProps) {
         />
 
         {/* Tecnologias */}
-        <div className="mt-20">
+        <div className="!mt-20">
           <TechnologiesCarousel isDark={isDark} />
         </div>
       </div>
@@ -150,39 +143,35 @@ export function CareerSection({ isDark }: CareerSectionProps) {
         footer={null}
         centered
         width={700}
-        className={`${
-          isDark ? "[&_.ant-modal-content]:!bg-gray-900 [&_.ant-modal-header]:!bg-gray-900" : ""
-        }`}
+        className={`${isDark ? "[&_.ant-modal-content]:!bg-gray-900 [&_.ant-modal-header]:!bg-gray-900" : ""
+          }`}
         closeIcon={
           <X className={`w-5 h-5 ${isDark ? "text-white" : "text-black"}`} />
         }
       >
         {selectedEvent && (
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex !items-center !gap-2 !mb-2">
               <Calendar className="w-5 h-5 text-[#34a1eb]" />
-              <span className="text-sm text-[#34a1eb]">
+              <span className="text-sm !text-[#34a1eb]">
                 {selectedEvent.year}
               </span>
             </div>
 
             <Title level={3}>{selectedEvent.title}</Title>
 
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex !items-center !gap-2 !mb-4">
               <Briefcase className="w-5 h-5 text-gray-400" />
               <span
-                className={`text-lg ${
-                  isDark ? "text-gray-400" : "text-gray-600"
-                }`}
+                className={`text-lg ${isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
               >
                 {selectedEvent.company}
               </span>
             </div>
 
             <Paragraph
-              className={`mb-6 text-lg ${
-                isDark ? "text-gray-300" : "text-gray-700"
-              }`}
+              className={`!mb-6 text-lg ${isDark ? "label-dark" : "label-light"}`}
             >
               {selectedEvent.description}
             </Paragraph>
@@ -190,13 +179,11 @@ export function CareerSection({ isDark }: CareerSectionProps) {
             <Title level={4} className="!mb-3">
               Principais Atividades:
             </Title>
-            <ul className="space-y-1 mb-6">
+            <ul className="space-y-1 !mb-6">
               {selectedEvent.details.map((detail, index) => (
                 <li
                   key={index}
-                  className={`flex gap-3 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
+                  className={`flex !gap-3 ${isDark ? "label-dark" : "label-light"}`}
                 >
                   <span className="text-[#34a1eb] mt-1">•</span> {detail}
                 </li>
@@ -206,15 +193,14 @@ export function CareerSection({ isDark }: CareerSectionProps) {
             <Title level={4} className="!mb-3">
               Tecnologias Utilizadas:
             </Title>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex !flex-wrap !gap-2">
               {selectedEvent.technologies.map((tech, index) => (
                 <Tag
                   key={index}
-                  className={`px-3 py-1 text-base ${
-                    isDark
-                      ? "!bg-gray-800 !text-gray-300"
-                      : "!bg-gray-100 !text-gray-700"
-                  }`}
+                  className={`px-3 py-1 text-base ${isDark
+                    ? "!bg-gray-800 !text-gray-300"
+                    : "!bg-gray-100 !text-gray-700"
+                    }`}
                 >
                   {tech}
                 </Tag>

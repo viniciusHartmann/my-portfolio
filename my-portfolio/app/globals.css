@@ -87,14 +87,10 @@ a, button, input, textarea, select {
   }
 }
 
-.paragraph {
-  text-align: center;
-}
-
 .label-dark {
-  color: #9ca3af; /* gray-400-ish */
+  color: #9ca3af !important
 }
 
 .label-light {
-  color: #4b5563; /* gray-600-ish */
+  color: #4b5563 !important
 }
