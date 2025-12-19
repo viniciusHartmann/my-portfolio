@@ -19,7 +19,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
       icon: Linkedin,
       label: "LinkedIn",
       value: "linkedin.com/in/viniciushartmann",
-      href: "https://linkedin.com/in/viniciushartmann",
+      href: "https://www.linkedin.com/in/vinicius-hartmann-211571237",
     },
     {
       icon: Github,
