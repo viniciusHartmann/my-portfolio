@@ -72,37 +72,30 @@ export function AboutSection({ isDark }: AboutSectionProps) {
             </Title>
 
             <Paragraph
-              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"
-                }`}
-
+              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"}`}
             >
               Iniciei minha jornada na programação aos 17 anos e, desde então, transformei a curiosidade 
               técnica em uma carreira sólida de 4 anos movida por paixão e constante aprendizado.
+            </Paragraph>
+
+            <Paragraph
+              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"}`}
+            >
               Atualmente, faço parte do time da LOGAE, uma organização que respira tecnologia e que foi reconhecida em 2025 
               como uma das Top 10 empresas mais inovadoras do mercado. Atuar em um ambiente de elite me permite estar na 
               linha de frente do que há de novo no setor.
+            </Paragraph>
+
+            <Paragraph
+              className={`text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"} `}
+            >
               Sou fascinado por desafios que tiram o conhecimento da zona de conforto. 
               Acredito na filosofia do learning by doing (aprender na prática), por isso mantenho minha mente ativa 
-              através de projetos contínuos e do estudo das tendências que moldam o futuro da tecnologia. 
+              através de projetos contínuos e do estudo das tendências que moldam o futuro da tecnologia.
+            </Paragraph>
+
+            <Paragraph className={`text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"} `}>
               Se o desafio exige uma ideia nova e uma execução inovadora, é onde eu quero estar.
-            </Paragraph>
-
-            <Paragraph
-              className={`mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"
-                }`}
-
-            >
-              Tenho expertise em desenvolvimento web e desktop, trabalhando com
-              frameworks como React, TypeScript, Delphi e muito mais.
-            </Paragraph>
-
-            <Paragraph
-              className={`text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? "label-dark" : "label-light"
-                } `}
-
-            >
-              Sempre buscando aprender novas tecnologias e compartilhar
-              conhecimento com a comunidade.
             </Paragraph>
           </Col>
         </Row>
