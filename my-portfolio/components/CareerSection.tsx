@@ -39,14 +39,15 @@ export function CareerSection({ isDark }: CareerSectionProps) {
       year: "2021 - Presente",
       title: "Full Stack Developer",
       company: "LOGAE",
-      description: "Mantendo e desenvolvendo novas funcionalidades dentro do produto do E-Torre",
+      description: "Mantendo e desenvolvendo novas funcionalidades",
       details: [
         "Arquitetura e desenvolvimento de aplicações escaláveis",
         "Criação de telas e ajustes urgentes",
+        "Criação de Dashboards",
         "Implementação de melhores práticas de código",
         "Integração de sistemas complexos",
       ],
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "SQL Server", "Delphi", "C#"],
+      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "SQL Server", "Delphi", "C#", "DevExtreme"],
     }
   ];
 
@@ -98,6 +99,7 @@ export function CareerSection({ isDark }: CareerSectionProps) {
                 >
                   {event.description}
                 </Paragraph>
+                <label>Clique e saiba mais</label>
               </Card>
             ),
           }))}
