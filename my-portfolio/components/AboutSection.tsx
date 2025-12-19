@@ -1,7 +1,7 @@
 "use client";
 
 import { Image as AntImage, Typography, Card, Row, Col } from "antd";
-import { Code2, Gamepad2, Music, Plane } from "lucide-react";
+import { Code2, Gamepad2, Music, Plane, Volleyball } from "lucide-react";
 
 const { Title, Paragraph } = Typography;
 
@@ -12,14 +12,14 @@ interface AboutSectionProps {
 export function AboutSection({ isDark }: AboutSectionProps) {
   const hobbies = [
     {
-      icon: Code2,
-      title: "Programação",
-      description: "Apaixonado por criar soluções inovadoras",
-    },
-    {
       icon: Gamepad2,
       title: "Games",
-      description: "Entusiasta de jogos e tecnologia",
+      description: "Acompanho alguns jogos online como CS2",
+    },
+    {
+      icon: Volleyball,
+      title: "Esportes",
+      description: "Gosto de praticar e conhecer uma grande quantidade de esportes",
     },
     {
       icon: Music,
@@ -76,9 +76,15 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                 }`}
 
             >
-              Com mais de 10 anos de experiência em desenvolvimento de software,
-              sou especializado em criar soluções robustas e escaláveis usando
-              tecnologias modernas.
+              Iniciei minha jornada na programação aos 17 anos e, desde então, transformei a curiosidade 
+              técnica em uma carreira sólida de 4 anos movida por paixão e constante aprendizado.
+              Atualmente, faço parte do time da LOGAE, uma organização que respira tecnologia e que foi reconhecida em 2025 
+              como uma das Top 10 empresas mais inovadoras do mercado. Atuar em um ambiente de elite me permite estar na 
+              linha de frente do que há de novo no setor.
+              Sou fascinado por desafios que tiram o conhecimento da zona de conforto. 
+              Acredito na filosofia do learning by doing (aprender na prática), por isso mantenho minha mente ativa 
+              através de projetos contínuos e do estudo das tendências que moldam o futuro da tecnologia. 
+              Se o desafio exige uma ideia nova e uma execução inovadora, é onde eu quero estar.
             </Paragraph>
 
             <Paragraph

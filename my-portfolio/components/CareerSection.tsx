@@ -24,57 +24,30 @@ export function CareerSection({ isDark }: CareerSectionProps) {
 
   const careerEvents: CareerEvent[] = [
     {
-      year: "2023 - Presente",
-      title: "Senior Full Stack Developer",
-      company: "Tech Company",
-      description: "Liderando projetos de desenvolvimento web e desktop",
+      year: "2020 - 2021",
+      title: "Técnico em Desenvolvimento de sistemas",
+      company: "SENAI",
+      description: "Início da carreira profissional",
+      details: [
+        "Aprendizado de tecnologias",
+        "Introdução ao Desenvolvimento de aplicações desktop e web",
+        "Projetos",
+      ],
+      technologies: ["PHP", "BootStrap", "FireBird", "Git"],
+    },
+    {
+      year: "2021 - Presente",
+      title: "Full Stack Developer",
+      company: "LOGAE",
+      description: "Mantendo e desenvolvendo novas funcionalidades dentro do produto do E-Torre",
       details: [
         "Arquitetura e desenvolvimento de aplicações escaláveis",
-        "Mentoria de desenvolvedores júnior",
+        "Criação de telas e ajustes urgentes",
         "Implementação de melhores práticas de código",
         "Integração de sistemas complexos",
       ],
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    },
-    {
-      year: "2020 - 2023",
-      title: "Full Stack Developer",
-      company: "Software House",
-      description: "Desenvolvimento de sistemas empresariais",
-      details: [
-        "Desenvolvimento de aplicações desktop com Delphi",
-        "Criação de APIs RESTful",
-        "Implementação de interfaces modernas com React",
-        "Otimização de performance de aplicações",
-      ],
-      technologies: ["Delphi", "React", "DevExpress", "SQL Server"],
-    },
-    {
-      year: "2017 - 2020",
-      title: "Desenvolvedor Pleno",
-      company: "StartUp Tech",
-      description: "Desenvolvimento de soluções inovadoras",
-      details: [
-        "Desenvolvimento de novos recursos",
-        "Manutenção de sistemas legados",
-        "Colaboração com equipes multidisciplinares",
-        "Participação em code reviews",
-      ],
-      technologies: ["JavaScript", "PHP", "MySQL", "jQuery"],
-    },
-    {
-      year: "2013 - 2017",
-      title: "Desenvolvedor Júnior",
-      company: "Software Corp",
-      description: "Início da carreira profissional",
-      details: [
-        "Aprendizado de tecnologias enterprise",
-        "Desenvolvimento de módulos específicos",
-        "Suporte a sistemas em produção",
-        "Documentação técnica",
-      ],
-      technologies: ["Delphi", "FireDAC", "Oracle", "Git"],
-    },
+      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "SQL Server", "Delphi", "C#"],
+    }
   ];
 
   return (
