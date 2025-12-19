@@ -34,12 +34,13 @@ export function Header({ isDark, toggleTheme }: HeaderProps) {
           <div className="hidden md:flex w-full justify-center">
             <nav className="flex gap-8">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.id}
-                  className="hover:text-[#34a1eb] transition-colors"
+                  href={`#${item.id}`}
+                  className="hover:text-[#34a1eb] transition-colors cursor-pointer"
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
             </nav>
           </div>
