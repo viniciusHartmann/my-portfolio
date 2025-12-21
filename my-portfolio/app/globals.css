@@ -94,3 +94,17 @@ a, button, input, textarea, select {
 .label-light {
   color: #4b5563 !important
 }
+
+.ant-table-dark {
+  background-color: #020617;
+}
+
+.ant-table-dark .ant-table-tbody > tr > td {
+  background-color: #020617;
+  color: #e5e7eb;
+  border-color: #1f2937;
+}
+
+.ant-table-dark .ant-table-tbody > tr:hover > td {
+  background-color: #020617 !important;
+}

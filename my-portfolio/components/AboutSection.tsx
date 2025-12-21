@@ -1,7 +1,7 @@
 "use client";
 
 import { Image as AntImage, Typography, Card, Row, Col } from "antd";
-import { Code2, Gamepad2, Music, Plane, Volleyball } from "lucide-react";
+import { Gamepad2, Music, Plane, Volleyball } from "lucide-react";
 
 const { Title, Paragraph } = Typography;
 
@@ -19,25 +19,24 @@ export function AboutSection({ isDark }: AboutSectionProps) {
     {
       icon: Volleyball,
       title: "Esportes",
-      description: "Gosto de praticar e conhecer uma grande quantidade de esportes",
+      description: "Gosto de praticar vários esportes entre eles: Futebol, Futevôlei e Padel",
     },
     {
       icon: Music,
       title: "Música",
-      description: "Apreciador de diversos estilos musicais",
+      description: "Variedade em gêneros, geralmente sertanejo, funk, hip hop e pop",
     },
     {
       icon: Plane,
       title: "Viagens",
-      description: "Explorando novos lugares e culturas",
+      description: "Adoro viajar e conhecer lugares e naturezas novas, no momento atual estou explorando várias praias de Santa Catarina",
     },
   ];
 
   return (
     <section
       id="about"
-      className={`!py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"
-        }`}
+      className={`!py-20 sm:py-32 px-4 sm:px-6 lg:px-8 ${isDark ? "bg-black" : "bg-white"}`}
     >
       <div className="container !mx-auto max-w-6xl">
         {/* Título principal */}
@@ -47,7 +46,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
 
         <Row gutter={[32, 32]} align="middle" className="!mb-16 sm:mb-24">
           {/* Foto */}
-          <Col xs={24} md={12} className="flex justify-center">
+          <Col xs={24} md={12} className="!flex justify-center">
             <div className="relative 
                   w-40 h-40 
                   sm:w-56 sm:h-56 

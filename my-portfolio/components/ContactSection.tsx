@@ -1,6 +1,6 @@
 'use client";'
-import { Mail, Linkedin, Github, Send } from "lucide-react";
-import { Form, Input, Button, Table } from "antd";
+import { Mail, Linkedin, Github } from "lucide-react";
+import { Table } from "antd";
 import { Card } from "./ui/card-custom";
 
 interface ContactSectionProps {
@@ -13,7 +13,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
       icon: Mail,
       label: "Email",
       value: "vinicius.hartmann31@gmail.com",
-      href: "mailto:vinicius@example.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=vinicius.hartmann31@gmail.com",
     },
     {
       icon: Linkedin,
@@ -40,66 +40,25 @@ export function ContactSection({ isDark }: ContactSectionProps) {
         </h2>
 
         <p
-          className={`!text-center text-base sm:text-lg !mb-8 sm:mb-12 px-4 ${
-            isDark ? "text-gray-400" : "text-gray-600"
-          }`}
+          className={`!text-center text-base sm:text-lg !mb-8 sm:mb-12 px-4 ${isDark ? "text-gray-400" : "text-gray-600"
+            }`}
         >
           Estou sempre aberto a novos projetos e oportunidades
         </p>
 
-        <div className="grid md:grid-cols-2 !gap-6 sm:gap-8">
-          {/* Formulário com Ant Design */}
+        {/* Informações de Contato */}
+        <div>
           <Card
-            variant="borderless"
-            className={`${isDark ? "bg-gray-900" : "bg-white"}`}
-            style={{ boxShadow: isDark ? "0 0 0 1px #1f2937" : "0 0 0 1px #e5e7eb" }}
+            title={
+              <span className={isDark ? "text-gray-100" : "text-gray-900"}>
+                Informações de Contato
+              </span>
+            }
+            className={`${isDark ? "label-dark" : "label-light"}`}
           >
-            <Form layout="vertical">
-              <Form.Item label="Nome" required>
-                <Input
-                  placeholder="Seu nome"
-                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
-                />
-              </Form.Item>
-
-              <Form.Item label="Email" required>
-                <Input
-                  type="email"
-                  placeholder="seu@email.com"
-                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
-                />
-              </Form.Item>
-
-              <Form.Item label="Mensagem" required>
-                <Input.TextArea
-                  rows={5}
-                  placeholder="Sua mensagem..."
-                  className={`${isDark ? "!bg-gray-800 !text-white" : ""}`}
-                />
-              </Form.Item>
-
-              <Button
-                type="primary"
-                block
-                icon={<Send className="w-5 h-5" />}
-                className="!bg-[#34a1eb] hover:!bg-[#2a8acc]"
-              >
-                Enviar Mensagem
-              </Button>
-            </Form>
-          </Card>
-
-          {/* Informações de Contato */}
-          <div className="!flex flex-col !gap-6">
-            <Card
-              title="Informações de Contato"
-              className={`${isDark ? "bg-gray-900" : "bg-gray-50"}`}
-              style={{
-                borderColor: isDark ? "#1f2937" : "#e5e7eb",
-                color: isDark ? "white" : "black",
-              }}
-            >
+            <div className="flex justify-center">
               <Table
+                className={isDark ? "ant-table-dark" : ""}
                 columns={[
                   {
                     key: "icon",
@@ -118,9 +77,7 @@ export function ContactSection({ isDark }: ContactSectionProps) {
                           href={record.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`text-sm break-all hover:underline ${
-                            isDark ? "text-gray-400" : "text-gray-600"
-                          }`}
+                          className={`text-sm break-all hover:underline ${isDark ? "label-dark" : "label-light"}}`}
                         >
                           {record.value}
                         </a>
@@ -132,22 +89,21 @@ export function ContactSection({ isDark }: ContactSectionProps) {
                 pagination={false}
                 bordered={false}
                 showHeader={false}
+                style={{ width: "100%" }}
               />
-            </Card>
+            </div>
+          </Card>
 
-            {/* Frase Inspiradora */}
-            <Card
-              className={`text-center ${
-                isDark
-                  ? "bg-gradient-to-br from-[#34a1eb]/20 to-transparent border-[#34a1eb]/30"
-                  : "bg-gradient-to-br from-[#34a1eb]/10 to-transparent border-[#34a1eb]/20"
+          <Card
+            className={`text-center ${isDark
+              ? "bg-gradient-to-br from-[#34a1eb]/20 to-transparent border-[#34a1eb]/30"
+              : "bg-gradient-to-br from-[#34a1eb]/10 to-transparent border-[#34a1eb]/20"
               }`}
-            >
-              <p className={`${isDark ? "label-dark" : "label-light"}`}>
-                "Transformando ideias em realidade através do código"
-              </p>
-            </Card>
-          </div>
+          >
+            <p className={`${isDark ? "label-dark" : "label-light"}`}>
+              Transformando ideias em realidade através do código
+            </p>
+          </Card>
         </div>
       </div>
     </section>
